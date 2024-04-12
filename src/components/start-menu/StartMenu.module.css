@@ -1,0 +1,133 @@
+.menu-container {
+    background-color: var(--tile-default-color);
+    color: white;
+    position: absolute;
+    height: 406px;
+    width: 320px;
+    z-index: 200;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 10px solid var(--border-green);
+    /* display: none; */
+
+    position: absolute;
+    border-radius: 10px;
+    top: -10px;
+    left: -10px;
+
+    opacity: 0.4;
+}
+
+
+.menu-container h1 {
+    color: white;
+    font-size: 25px;
+    margin-top: -20px;
+    margin-bottom: 15px;
+}
+
+.controls-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.level {
+    padding: 10px 0px;
+    width: 180px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+
+.level-btns {
+    width: fit-content;
+    margin: 5px;
+    cursor: pointer;
+    margin: 0px 60px;
+    border: 1px solid var(--tile-default-color);
+    user-select: none;
+
+}
+
+.selected-level {
+    color: var(--orange-regular);
+    border: 1px solid var(--orange-border);
+    width: 100px;
+    border-radius: 10px;
+}
+
+.btn {
+    border: 0 transparent;
+    border: 1px solid #BE9369;
+    font-family: pacifico;
+    background-color: #327c88;
+    color: white;
+    padding: 5px 15px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none;
+}
+
+
+.btn:active {
+    transform: scale(0.985);
+    box-shadow: 4px 4px 5px 0px rgba(40, 100, 109, 0.75) inset;
+}
+
+
+/*====================================*/
+/*=========== RESPONSIVNESS ==========*/
+/*====================================*/
+
+@media screen and (min-width: 450px) {
+
+    .menu-container {
+        height: 486px;
+        width: 400px;
+    }
+
+}
+
+
+@media screen and (min-width: 700px) {
+
+    .menu-container {
+        height: 543px;
+        width: 440px;
+    }
+
+    .menu-container h1 {
+        font-size: 35px;
+    }
+
+    .btn {
+        font-size: 30px;
+        padding: 5px 15px;
+    }
+
+    .level {
+        font-size: 30px;
+    }
+
+    .selected-level {
+        width: 130px;
+    }
+
+    .btn:active {
+        transform: scale(0.99);
+        box-shadow: 6px 6px 5px 0px rgba(40, 100, 109, 0.75) inset;
+    }
+
+}

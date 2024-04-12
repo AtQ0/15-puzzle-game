@@ -1,0 +1,60 @@
+.game-container {
+    position: relative;
+    margin-top: -40px;
+}
+
+.game-container h1 {
+    text-align: center;
+    color: var(--tile-default-color);
+    font-size: 40px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 30px;
+    user-select: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+.board-wrapper-easy {
+    display: grid;
+    grid-template-columns: repeat(3, var(--size-easy));
+    grid-template-rows: repeat(3, var(--size-easy));
+    border-radius: 10px;
+    position: relative;
+    /* overflow: hidden; */
+    border: 10px solid #327c88;
+}
+
+.board-wrapper-classic {
+    display: grid;
+    grid-template-columns: repeat(4, var(--size-classic));
+    grid-template-rows: repeat(4, var(--size-classic));
+    border-radius: 10px;
+    position: relative;
+    /* overflow: hidden; */
+    border: 10px solid #327c88;
+}
+
+.board-wrapper-difficult {
+    display: grid;
+    grid-template-columns: repeat(5, var(--size-difficult));
+    grid-template-rows: repeat(5, var(--size-difficult));
+    border-radius: 10px;
+    position: relative;
+    /* overflow: hidden; */
+    border: 10px solid #327c88;
+}
+
+/*====================================*/
+/*=========== RESPONSIVNESS ==========*/
+/*====================================*/
+
+@media screen and (min-width: 700px) {
+
+    .game-container h1 {
+        font-size: 60px;
+    }
+
+}

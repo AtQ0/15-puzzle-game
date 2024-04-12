@@ -1,0 +1,183 @@
+.instructions-container {
+    background-color: var(--tile-default-color);
+    height: 406px;
+    width: 320px;
+    z-index: 300;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    border: 10px solid var(--border-green);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    /* display: none; */
+}
+
+.logo-wrapper {
+    display: flex;
+    justify-content: center;
+
+    height: 130px;
+}
+
+.svg-logo {
+    margin-left: 10px;
+}
+
+.instructions-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.instructions-wrapper p {
+    width: fit-content;
+    background-color: red;
+
+}
+
+.instructions {
+    text-align: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 0;
+    font-family: gamesStudio;
+    user-select: none;
+
+    /*=========================*/
+    /*== GRADIANT TEXT COLOR ==*/
+    /*=========================*/
+
+    /*ORANGE*/
+    background: -webkit-radial-gradient(circle, rgba(246, 186, 82, 1) 0%, rgba(167, 131, 114, 1) 75%);
+    background: radial-gradient(circle, rgba(246, 186, 82, 1) 0%, rgba(167, 131, 114, 1) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /*WHITE*/
+    background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 1) 75%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 1) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+
+}
+
+span::after {
+    content: "\a";
+    white-space: pre;
+}
+
+.btn-wrapper {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+}
+
+.play-btn {
+    height: fit-content;
+    border: 1px solid #f2f2f2;
+    cursor: pointer;
+    font-family: pacifico;
+    border-radius: 10px;
+    font-size: 20px;
+    padding: 5px 20px;
+    transition: transform 0.1s, box-shadow 0.1s;
+
+
+    /*=========================*/
+    /*== GRADIANT TEXT COLOR ==*/
+    /*=========================*/
+
+    /*ORANGE*/
+    background: -webkit-radial-gradient(circle, rgba(246, 186, 82, 1) 0%, rgba(167, 131, 114, 1) 75%);
+    background: radial-gradient(circle, rgba(246, 186, 82, 1) 0%, rgba(167, 131, 114, 1) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    /*WHITE*/
+    background: -webkit-radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 1) 75%);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(220, 220, 220, 1) 75%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}
+
+.play-btn:active {
+    transform: scale(0.985);
+    box-shadow: 4px 4px 5px 0px rgba(40, 100, 109, 0.75) inset;
+}
+
+
+/*=================================*/
+/*========== LOGO IMAGE ===========*/
+/*=================================*/
+
+
+/*USED TO STYLE ELEMENTS IN THE SVG*/
+
+.cls-1 {
+    fill: none;
+    stroke: #BE9369;
+    stroke: #f2f2f2;
+    stroke-miterlimit: 10;
+    stroke-width: 40px;
+}
+
+/*USED TO STYLE THE SVG IMAGE ITSELF*/
+
+.svg-logo {
+    width: 100px;
+    height: auto;
+    /* or specify a fixed height if needed */
+}
+
+
+
+
+/*====================================*/
+/*=========== RESPONSIVNESS ==========*/
+/*====================================*/
+
+@media screen and (min-width: 450px) {
+
+    .instructions-container {
+        height: 486px;
+        width: 400px;
+    }
+
+    .svg-logo {
+        width: 200px;
+    }
+
+    .instructions {
+        font-size: 18px;
+    }
+}
+
+
+@media screen and (min-width: 700px) {
+
+    .instructions-container {
+        height: 543px;
+        width: 440px;
+    }
+
+    .instructions {
+        font-size: 22px;
+    }
+
+    .play-btn {
+        padding: 10px 30px;
+    }
+
+}
