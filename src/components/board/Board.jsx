@@ -39,14 +39,22 @@ function Board() {
     function storeSelectedLevel(numberOfTiles, numberOfTilesPerRow) {
         setNrOfTiles(numberOfTiles);
         setNrOfTilesPerRow(numberOfTilesPerRow);
+
+        reset();
     }
 
 
-    /*===========================*/
-    /*===  OVERLAY COMPONENT ====*/
-    /*===========================*/
 
+    /*========================*/
+    /*===  TILE COMPONENT ====*/
+    /*========================*/
 
+    //Ensures current arrangement is updated
+    //IMPORTANT for Tile component.
+    useEffect(() => {
+        // Generate numbers whenever nrOfTiles or nrOfTilesPerRow changes
+        setCurrentArrangementOfNrs(generateNumbers());
+    }, [nrOfTiles, nrOfTilesPerRow]);
 
 
 
@@ -131,15 +139,24 @@ function Board() {
             return { value: tile.value, index: indexOfLastTile };
         });
 
+
+
         // Update the current arrangement with new arrangement
         setCurrentArrangementOfNrs(newArrangementOfNrs);
+
+    }
+
+
+
+    //Resets current arangement (game) by calling generateNumbers
+    function reset() {
+        setCurrentArrangementOfNrs(generateNumbers());
     }
 
 
 
 
 
-    console.log(generateNumbers())
 
 
     return (

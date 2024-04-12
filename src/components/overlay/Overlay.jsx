@@ -5,8 +5,6 @@ import styles from './Overlay.module.css'
 
 function Overlay({ numberOfTiles, numberOfTilesPerRow }) {
 
-    console.log("HELP:", numberOfTiles, numberOfTilesPerRow)
-
     //Create new array with n-elements
     const array = new Array(numberOfTiles);
 

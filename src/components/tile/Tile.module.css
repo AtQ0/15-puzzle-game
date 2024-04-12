@@ -12,7 +12,6 @@
     transition: left 0.4s, top 0.4s;
 }
 
-
 .number-classic {
     position: absolute;
     width: var(--size-classic);
@@ -42,46 +41,429 @@
     transition: left 0.4s, top 0.4s;
 }
 
+/*Set style for the disabled tile nr. 16*/
 
-
-
-.slot-classic-0 {
-    left: 100px;
-    top: 0px;
-    user-select: none;
+.disabled {
+    /* background-color: red; */
+    display: none;
 }
 
-.slot-classic-1 {
-    left: 200px;
-    top: 0;
-    user-select: none;
+.correct {
+    background-color: var(--tile-correct-color);
 }
 
 
+/*======================================*/
+/*=== TILE DISTRIBUTION ACROSS SLOTS ===*/
+/*======================================*/
 
+/*======================*/
+/*===== EASY LEVEL =====*/
+/*======================*/
 
+/*=========*/
+/*First row*/
+/*=========*/
 
 .slot-easy-0 {
-    left: 100px;
-    top: 0px;
+    left: 0;
+    top: 0;
     user-select: none;
 }
 
 .slot-easy-1 {
-    left: 200px;
+    left: calc(1 * var(--size-easy));
+    top: 0;
+    user-select: none;
+}
+
+.slot-easy-2 {
+    left: calc(2 * var(--size-easy));
     top: 0;
     user-select: none;
 }
 
 
+/*==========*/
+/*Second row*/
+/*==========*/
+
+
+.slot-easy-3 {
+    left: 0;
+    top: calc(1 * var(--size-easy));
+    user-select: none;
+}
+
+
+.slot-easy-4 {
+    left: calc(1 * var(--size-easy));
+    top: calc(1 * var(--size-easy));
+    user-select: none;
+}
+
+.slot-easy-5 {
+    left: calc(2 * var(--size-easy));
+    top: calc(1 * var(--size-easy));
+    user-select: none;
+}
+
+/*==========*/
+/*Third row*/
+/*==========*/
+
+.slot-easy-6 {
+    left: calc(0* var(--size-easy));
+    top: calc(2 * var(--size-easy));
+    user-select: none;
+}
+
+.slot-easy-7 {
+    left: calc(1 * var(--size-easy));
+    top: calc(2 * var(--size-easy));
+    user-select: none;
+}
+
+
+.slot-easy-8 {
+    left: calc(2 * var(--size-easy));
+    top: calc(2 * var(--size-easy));
+    user-select: none;
+}
+
+
+/*=======================*/
+/*==== CLASSIC LEVEL ====*/
+/*=======================*/
+
+/*=========*/
+/*First row*/
+/*=========*/
+
+.slot-classic-0 {
+    left: 0;
+    top: 0;
+    user-select: none;
+}
+
+.slot-classic-1 {
+    left: calc(1 * var(--size-classic));
+    top: 0;
+    user-select: none;
+}
+
+.slot-classic-2 {
+    left: calc(2 * var(--size-classic));
+    top: 0;
+    user-select: none;
+}
+
+.slot-classic-3 {
+    left: calc(3 * var(--size-classic));
+    top: 0;
+    user-select: none;
+}
+
+/*==========*/
+/*Second row*/
+/*==========*/
+
+.slot-classic-4 {
+    left: 0;
+    top: calc(1 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-5 {
+    left: calc(1 * var(--size-classic));
+    top: calc(1 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-6 {
+    left: calc(2* var(--size-classic));
+    top: calc(1 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-7 {
+    left: calc(3 * var(--size-classic));
+    top: calc(1 * var(--size-classic));
+    user-select: none;
+}
+
+/*==========*/
+/*Third row*/
+/*==========*/
+
+.slot-classic-8 {
+    left: 0;
+    top: calc(2 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-9 {
+    left: calc(1 * var(--size-classic));
+    top: calc(2 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-10 {
+    left: calc(2 * var(--size-classic));
+    top: calc(2 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-11 {
+    left: calc(3 * var(--size-classic));
+    top: calc(2 * var(--size-classic));
+    user-select: none;
+}
+
+/*==========*/
+/*Forth row*/
+/*==========*/
+
+.slot-classic-12 {
+    left: 0;
+    top: calc(3 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-13 {
+    left: calc(1 * var(--size-classic));
+    top: calc(3 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-14 {
+    left: calc(2 * var(--size-classic));
+    top: calc(3 * var(--size-classic));
+    user-select: none;
+}
+
+.slot-classic-15 {
+    left: calc(3 * var(--size-classic));
+    top: calc(3 * var(--size-classic));
+    user-select: none;
+}
+
+
+
+/*=========================*/
+/*==== DIFFICULT LEVEL ====*/
+/*================??=======*/
+
+/*=========*/
+/*First row*/
+/*=========*/
+
 .slot-difficult-0 {
-    left: 100px;
-    top: 0px;
+    left: 0;
+    top: 0;
     user-select: none;
 }
 
 .slot-difficult-1 {
-    left: 200px;
+    left: calc(1 * var(--size-difficult));
     top: 0;
     user-select: none;
+}
+
+.slot-difficult-2 {
+    left: calc(2 * var(--size-difficult));
+    top: 0;
+    user-select: none;
+}
+
+.slot-difficult-3 {
+    left: calc(3 * var(--size-difficult));
+    top: 0;
+    user-select: none;
+}
+
+.slot-difficult-4 {
+    left: calc(4 * var(--size-difficult));
+    top: 0;
+    user-select: none;
+}
+
+/*==========*/
+/*Second row*/
+/*==========*/
+
+
+.slot-difficult-5 {
+    left: calc(0 * var(--size-difficult));
+    top: calc(1 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-6 {
+    left: calc(1* var(--size-difficult));
+    top: calc(1 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-7 {
+    left: calc(2 * var(--size-difficult));
+    top: calc(1 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-8 {
+    left: calc(3 * var(--size-difficult));
+    top: calc(1 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-9 {
+    left: calc(4 * var(--size-difficult));
+    top: calc(1 * var(--size-difficult));
+    user-select: none;
+}
+
+/*==========*/
+/*Third row*/
+/*==========*/
+
+
+.slot-difficult-10 {
+    left: calc(0 * var(--size-difficult));
+    top: calc(2 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-11 {
+    left: calc(1 * var(--size-difficult));
+    top: calc(2 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-12 {
+    left: calc(2 * var(--size-difficult));
+    top: calc(2 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-13 {
+    left: calc(3 * var(--size-difficult));
+    top: calc(2 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-14 {
+    left: calc(4 * var(--size-difficult));
+    top: calc(2 * var(--size-difficult));
+    user-select: none;
+}
+
+/*==========*/
+/*Forth row*/
+/*==========*/
+
+
+.slot-difficult-15 {
+    left: calc(0 * var(--size-difficult));
+    top: calc(3 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-16 {
+    left: calc(1 * var(--size-difficult));
+    top: calc(3 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-17 {
+    left: calc(2 * var(--size-difficult));
+    top: calc(3 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-18 {
+    left: calc(3 * var(--size-difficult));
+    top: calc(3 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-19 {
+    left: calc(4 * var(--size-difficult));
+    top: calc(3 * var(--size-difficult));
+    user-select: none;
+}
+
+
+/*=========*/
+/*Fifth row*/
+/*=========*/
+
+
+.slot-difficult-20 {
+    left: calc(0 * var(--size-difficult));
+    top: calc(4 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-21 {
+    left: calc(1 * var(--size-difficult));
+    top: calc(4 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-22 {
+    left: calc(2 * var(--size-difficult));
+    top: calc(4 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-23 {
+    left: calc(3 * var(--size-difficult));
+    top: calc(4 * var(--size-difficult));
+    user-select: none;
+}
+
+.slot-difficult-24 {
+    left: calc(4 * var(--size-difficult));
+    top: calc(4 * var(--size-difficult));
+    user-select: none;
+}
+
+
+
+
+/*====================================*/
+/*=========== RESPONSIVNESS ==========*/
+/*====================================*/
+
+@media screen and (min-width: 450px) {
+
+    .number-easy {
+        font-size: 50px;
+    }
+
+    .number-classic {
+        font-size: 50px;
+    }
+
+    .number-difficult {
+        font-size: 50px;
+    }
+}
+
+@media screen and (min-width: 700px) {
+
+    .number-easy {
+        font-size: 55px;
+    }
+
+    .number-classic {
+        font-size: 55px;
+    }
+
+
+    .number-difficult {
+        font-size: 55px;
+    }
+
 }
