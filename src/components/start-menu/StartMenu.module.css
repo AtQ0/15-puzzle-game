@@ -11,13 +11,10 @@
     align-items: center;
     border: 10px solid var(--border-green);
     /* display: none; */
-
     position: absolute;
     border-radius: 10px;
     top: -10px;
     left: -10px;
-
-    opacity: 0.4;
 }
 
 

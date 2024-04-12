@@ -23,7 +23,6 @@ a {
     grid-template-rows: repeat(3, var(--size-easy));
     border-radius: 10px;
     position: relative;
-    /* overflow: hidden; */
     border: 10px solid #327c88;
 }
 
@@ -33,7 +32,6 @@ a {
     grid-template-rows: repeat(4, var(--size-classic));
     border-radius: 10px;
     position: relative;
-    /* overflow: hidden; */
     border: 10px solid #327c88;
 }
 
@@ -43,7 +41,6 @@ a {
     grid-template-rows: repeat(5, var(--size-difficult));
     border-radius: 10px;
     position: relative;
-    /* overflow: hidden; */
     border: 10px solid #327c88;
 }
 

@@ -7,6 +7,7 @@ import Instructions from '../instructions/Instructions';
 import Overlay from '../overlay/Overlay';
 import StartMenu from '../start-menu/StartMenu';
 import Tile from '../tile/Tile';
+import Controls from '../controls/Controls';
 
 //Import hooks from react
 import { useEffect, useState } from 'react';
@@ -35,12 +36,28 @@ function Board() {
     const [nrOfTiles, setNrOfTiles] = useState(16);
     const [nrOfTilesPerRow, setNrOfTilesPerRow] = useState(4);
 
+    //State variable used for visibility of StartMenu
+    const [isStartMenuVisible, setIsStartMenuVisible] = useState(true);
+
     //Update state variables
     function storeSelectedLevel(numberOfTiles, numberOfTilesPerRow) {
+
+        //Update state variable
         setNrOfTiles(numberOfTiles);
         setNrOfTilesPerRow(numberOfTilesPerRow);
 
+        //Toggle visibility of StartMenu
+        setIsStartMenuVisible(!isStartMenuVisible);
+
+        //Reset game
         reset();
+    }
+
+    function backToStartMenu() {
+
+        //Toggle visibility of StartMenu
+        setIsStartMenuVisible(!isStartMenuVisible);
+
     }
 
 
@@ -155,10 +172,6 @@ function Board() {
 
 
 
-
-
-
-
     return (
 
         <div className={`${styles['game-container']} `}>
@@ -175,7 +188,9 @@ function Board() {
 
                 {isInstructionsRendering ? <Instructions handleRenderingOfInstructions={handleRenderingOfInstructions} /> : null}
 
-                <StartMenu storeSelectedLevel={storeSelectedLevel} />
+                {isStartMenuVisible ? <StartMenu storeSelectedLevel={storeSelectedLevel} /> : null}
+
+
 
                 <Overlay numberOfTiles={nrOfTiles} numberOfTilesPerRow={nrOfTilesPerRow} />
 
@@ -190,9 +205,11 @@ function Board() {
 
 
 
-
-
             </div>
+
+
+            <Controls backToStartMenu={backToStartMenu} reset={reset} />
+
 
         </div>
     )

@@ -1,0 +1,43 @@
+.button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+    align-items: center;
+}
+
+button {
+    border: 0 transparent;
+    border: 1px solid var(--orange-border);
+    font-family: pacifico;
+    background-color: var(--border-green);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    user-select: none;
+}
+
+button:active {
+    transform: scale(0.985);
+    box-shadow: 4px 4px 5px 0px rgba(40, 100, 109, 0.75) inset;
+}
+
+/*====================================*/
+/*=========== RESPONSIVNESS ==========*/
+/*====================================*/
+
+@media screen and (min-width: 700px) {
+
+    button {
+        font-size: 30px;
+        border-radius: 15px;
+    }
+
+    button:active {
+        transform: scale(0.99);
+        box-shadow: 6px 6px 5px 0px rgba(40, 100, 109, 0.75) inset;
+    }
+
+}
