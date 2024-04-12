@@ -1,0 +1,87 @@
+.number-easy {
+    position: absolute;
+    width: var(--size-easy);
+    height: var(--size-easy);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--tile-default-color);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: left 0.4s, top 0.4s;
+}
+
+
+.number-classic {
+    position: absolute;
+    width: var(--size-classic);
+    height: var(--size-classic);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--tile-default-color);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: left 0.4s, top 0.4s;
+}
+
+
+.number-difficult {
+    position: absolute;
+    width: var(--size-difficult);
+    height: var(--size-difficult);
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    background-color: var(--tile-default-color);
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    transition: left 0.4s, top 0.4s;
+}
+
+
+
+
+.slot-classic-0 {
+    left: 100px;
+    top: 0px;
+    user-select: none;
+}
+
+.slot-classic-1 {
+    left: 200px;
+    top: 0;
+    user-select: none;
+}
+
+
+
+
+
+.slot-easy-0 {
+    left: 100px;
+    top: 0px;
+    user-select: none;
+}
+
+.slot-easy-1 {
+    left: 200px;
+    top: 0;
+    user-select: none;
+}
+
+
+.slot-difficult-0 {
+    left: 100px;
+    top: 0px;
+    user-select: none;
+}
+
+.slot-difficult-1 {
+    left: 200px;
+    top: 0;
+    user-select: none;
+}
