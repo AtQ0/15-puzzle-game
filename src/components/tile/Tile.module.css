@@ -3,13 +3,14 @@
     width: var(--size-easy);
     height: var(--size-easy);
     display: flex;
-    align-content: center;
+    align-items: center;
     justify-content: center;
     background-color: var(--tile-default-color);
     font-size: 40px;
     color: white;
     cursor: pointer;
     transition: left 0.4s, top 0.4s;
+    overflow: hidden;
 }
 
 .number-classic {
@@ -24,6 +25,7 @@
     color: white;
     cursor: pointer;
     transition: left 0.4s, top 0.4s;
+    overflow: hidden;
 }
 
 
@@ -39,9 +41,28 @@
     color: white;
     cursor: pointer;
     transition: left 0.4s, top 0.4s;
+    overflow: hidden;
 }
 
+
+/*================================*/
+/*=== ADJUST HEIGHT OF NUMBERS ===*/
+/*================================*/
+
+.number-wrapper-easy {
+
+    line-height: 30px;
+    padding-bottom: 12px;
+}
+
+
+.number-wrapper-difficult {
+    line-height: 53px;
+}
+
+/*======================================*/
 /*Set style for the disabled tile nr. 16*/
+/*======================================*/
 
 .disabled {
     /* background-color: red; */
@@ -431,7 +452,6 @@
 
 
 
-
 /*====================================*/
 /*=========== RESPONSIVNESS ==========*/
 /*====================================*/
@@ -449,6 +469,11 @@
     .number-difficult {
         font-size: 50px;
     }
+
+    .number-wrapper-difficult {
+        line-height: 70px;
+    }
+
 }
 
 @media screen and (min-width: 700px) {

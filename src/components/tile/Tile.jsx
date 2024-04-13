@@ -37,7 +37,10 @@ function Tile({ number, moveTile, numberOfTiles }) {
             onClick={() => moveTile(number)}
         >
             {/* Render incoming value from number in props */}
-            {number.value}
+            <div className={`${styles[`number-wrapper-${classPrefix}`]}`}>
+                {number.value}
+            </div>
+
         </div>
     );
 }
