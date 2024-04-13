@@ -1,6 +1,6 @@
 .instructions-container {
     background-color: var(--tile-default-color);
-    height: 408px;
+    height: 409px;
     width: 320px;
     z-index: 300;
     position: absolute;
