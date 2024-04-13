@@ -97,7 +97,12 @@ function Board() {
             }
 
             // Check if the arrangement is solvable
-            solvable = isSolvable(newArray);
+            if (nrOfTiles === 16) {
+                solvable = isSolvable16(newArray);
+            } else if (nrOfTiles === 9) {
+                solvable = isSolvable9(newArray);
+            }
+
         }
 
         // Map the array to contain keys with its values and indexes
@@ -106,9 +111,30 @@ function Board() {
         return arrayWithKeys;
     }
 
+    function isSolvable9(arrangement) {
+        // Count the number of inversions considering the position of the empty slot
+        let inversions = 0;
+
+        for (let i = 0; i < arrangement.length - 1; i++) {
+            for (let j = i + 1; j < arrangement.length; j++) {
+                // Skip counting inversions involving the empty slot
+                if (arrangement[i] === arrangement.length || arrangement[j] === arrangement.length) {
+                    continue;
+                }
+                if (arrangement[i] > arrangement[j]) {
+                    inversions++;
+                }
+            }
+        }
+
+        // The arrangement is solvable if the count of inversions is even
+        return inversions % 2 === 0;
+    }
+
+
 
     // Check if the arrangement is solvable
-    function isSolvable(arrangement) {
+    function isSolvable16(arrangement) {
         // Count number of inversions considering the position of the empty slot
         let inversions = 0;
         for (let i = 0; i < arrangement.length - 1; i++) {
