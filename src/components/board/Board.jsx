@@ -8,10 +8,10 @@ import Overlay from '../overlay/Overlay';
 import StartMenu from '../start-menu/StartMenu';
 import Tile from '../tile/Tile';
 import Controls from '../controls/Controls';
+import Winner from '../winner/Winner';
 
 //Import hooks from react
 import { useEffect, useState } from 'react';
-
 
 
 function Board() {
@@ -332,7 +332,7 @@ function Board() {
 
     return (
 
-        <div className={`${styles['game-container']} `}>
+        <div className={`${styles['game-container']}`}>
 
             <a href="/">
                 <h1>15 Puzzle Game</h1>
@@ -368,6 +368,7 @@ function Board() {
 
             <Controls backToStartMenu={backToStartMenu} reset={reset} />
 
+            <Winner backToStartMenu={backToStartMenu} currentArrangementOfNrs={currentArrangementOfNrs} reset={reset} />
 
         </div>
     )
