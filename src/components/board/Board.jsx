@@ -163,12 +163,54 @@ function Board() {
 
     }
 
-
-
     //Resets current arangement (game) by calling generateNumbers
     function reset() {
         setCurrentArrangementOfNrs(generateNumbers());
     }
+
+    /*===========================*/
+    /*===  KEYBOARD CONTROLS ====*/
+    /*===========================*/
+
+    //Function that enables keyboard presses for moving tiles
+    function handleKeyDown(e) {
+        // Find the index of last tile in the current arrangement array
+        const indexOfLastTile = currentArrangementOfNrs.find(n => n.value === nrOfTiles).index;
+
+        // If left arrow key is pressed & last tile is not in the rightmost column
+        if (e.keyCode === 37 && !(indexOfLastTile % 4 === 3))
+            // Move the tile adjacent to tile 16 to the left
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfLastTile + 1))
+
+        // If up arrow key is pressed & last tile is not in the bottom row
+        if (e.keyCode === 38 && !(indexOfLastTile > 11))
+            // Move the tile adjacent to tile 16 upwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfLastTile + 4))
+
+        // If right arrow key is pressed & last tile is not in the leftmost column
+        if (e.keyCode === 39 && !(indexOfLastTile % 4 === 0))
+            // Move the tile adjacent to tile 16 to the right
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfLastTile - 1))
+
+        // If down arrow key is pressed & last tile is not in the top row
+        if (e.keyCode === 40 && !(indexOfLastTile < 4))
+            // Move the tile adjacent to tile 16 downwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfLastTile - 4))
+
+    }
+
+
+    //useEffect that adds eventslistner keyboard keys, when Board mounts
+    useEffect(() => {
+
+        //Call handleKeyDown for any key press
+        document.addEventListener('keydown', handleKeyDown)
+
+        //Clean up code to remove eventlistener when unmounting component
+        return () => document.removeEventListener('keydown', handleKeyDown)
+
+    }) //Runs on every re-render of component
+
 
 
 
