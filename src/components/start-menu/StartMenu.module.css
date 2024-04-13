@@ -2,7 +2,7 @@
     background-color: var(--tile-default-color);
     color: white;
     position: absolute;
-    height: 406px;
+    height: 407px;
     width: 320px;
     z-index: 200;
     display: flex;
