@@ -2,7 +2,7 @@
     background-color: var(--tile-default-color);
     color: white;
     position: absolute;
-    height: 407px;
+    height: 408px;
     width: 320px;
     z-index: 200;
     display: flex;
@@ -101,7 +101,7 @@
 @media screen and (min-width: 700px) {
 
     .menu-container {
-        height: 546px;
+        height: 544px;
         width: 440px;
     }
 
