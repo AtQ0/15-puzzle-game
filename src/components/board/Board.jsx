@@ -97,10 +97,13 @@ function Board() {
             }
 
             // Check if the arrangement is solvable
-            if (nrOfTiles === 16) {
-                solvable = isSolvable16(newArray);
-            } else if (nrOfTiles === 9) {
+            if (nrOfTiles === 9) {
                 solvable = isSolvable9(newArray);
+            } else if (nrOfTiles === 16) {
+                solvable = isSolvable16(newArray);
+            }
+            else if (nrOfTiles === 25) {
+                solvable = isSolvable25(newArray);
             }
 
         }
@@ -131,8 +134,6 @@ function Board() {
         return inversions % 2 === 0;
     }
 
-
-
     // Check if the arrangement is solvable
     function isSolvable16(arrangement) {
         // Count number of inversions considering the position of the empty slot
@@ -153,6 +154,27 @@ function Board() {
         const emptySlotRow = Math.floor(arrangement.indexOf(nrOfTiles) / nrOfTilesPerRow) + 1;
         return (inversions + emptySlotRow) % 2 === 0;
     }
+
+    function isSolvable25(arrangement) {
+        // Count the number of inversions considering the position of the empty slot
+        let inversions = 0;
+
+        for (let i = 0; i < arrangement.length - 1; i++) {
+            for (let j = i + 1; j < arrangement.length; j++) {
+                // Skip counting inversions involving the empty slot
+                if (arrangement[i] === arrangement.length || arrangement[j] === arrangement.length) {
+                    continue;
+                }
+                if (arrangement[i] > arrangement[j]) {
+                    inversions++;
+                }
+            }
+        }
+
+        // The arrangement is solvable if the count of inversions is even
+        return inversions % 2 === 0;
+    }
+
 
     //Track current arrangement of numbers in the game
     const [currentArrangementOfNrs, setCurrentArrangementOfNrs] = useState(generateNumbers());
@@ -198,8 +220,35 @@ function Board() {
     /*===  KEYBOARD CONTROLS ====*/
     /*===========================*/
 
-    //Function that enables keyboard presses for moving tiles
-    function handleKeyDown(e) {
+    // Enables keyboard presses for a game of 9 tiles (3x3 grid)
+    function handleKeyDown9(e) {
+        // Find the index of the empty tile in the current arrangement array
+        const indexOfEmptyTile = currentArrangementOfNrs.find(n => n.value === nrOfTiles).index;
+
+        // If left arrow key is pressed & empty tile is not in the rightmost column
+        if (e.keyCode === 37 && indexOfEmptyTile % 3 !== 2)
+            // Move the tile adjacent to the empty tile to the left
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 1))
+
+        // If up arrow key is pressed & empty tile is not in the bottom row
+        if (e.keyCode === 38 && !(indexOfEmptyTile > 5))
+            // Move the tile adjacent to the empty tile upwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 3))
+
+        // If right arrow key is pressed & empty tile is not in the leftmost column
+        if (e.keyCode === 39 && indexOfEmptyTile % 3 !== 0)
+            // Move the tile adjacent to the empty tile to the right
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile - 1))
+
+        // If down arrow key is pressed & empty tile is not in the top row
+        if (e.keyCode === 40 && !(indexOfEmptyTile < 3))
+            // Move the tile adjacent to the empty tile downwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile - 3))
+    }
+
+
+    //Enables keyboard presses for a game of 16 tiles (4x4 grid)
+    function handleKeyDown16(e) {
         // Find the index of last tile in the current arrangement array
         const indexOfLastTile = currentArrangementOfNrs.find(n => n.value === nrOfTiles).index;
 
@@ -225,19 +274,60 @@ function Board() {
 
     }
 
+    // Enables keyboard presses for a game of 25 tiles (5x5 grid)
+    function handleKeyDown25(e) {
+        // Find the index of the empty tile in the current arrangement array
+        const indexOfEmptyTile = currentArrangementOfNrs.find(n => n.value === nrOfTiles).index;
+
+        // If left arrow key is pressed & empty tile is not in the rightmost column
+        if (e.keyCode === 37 && indexOfEmptyTile % 5 !== 4)
+            // Move the tile adjacent to the empty tile to the left
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 1));
+
+        // If up arrow key is pressed & empty tile is not in the bottom row
+        if (e.keyCode === 38 && !(indexOfEmptyTile > 19))
+            // Move the tile adjacent to the empty tile upwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 5));
+
+        // If right arrow key is pressed & empty tile is not in the leftmost column
+        if (e.keyCode === 39 && indexOfEmptyTile % 5 !== 0)
+            // Move the tile adjacent to the empty tile to the right
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile - 1));
+
+        // If down arrow key is pressed & empty tile is not in the top row
+        if (e.keyCode === 40 && !(indexOfEmptyTile < 5))
+            // Move the tile adjacent to the empty tile downwards
+            moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile - 5));
+    }
+
+
 
     //useEffect that adds eventslistner keyboard keys, when Board mounts
     useEffect(() => {
 
         //Call handleKeyDown for any key press
-        document.addEventListener('keydown', handleKeyDown)
+
+        if (nrOfTiles === 9) {
+            document.addEventListener('keydown', handleKeyDown9)
+        }
+        else if (nrOfTiles === 16) {
+            document.addEventListener('keydown', handleKeyDown16)
+        }
+        else if (nrOfTiles === 25) {
+            document.addEventListener('keydown', handleKeyDown25)
+        }
+
+
 
         //Clean up code to remove eventlistener when unmounting component
-        return () => document.removeEventListener('keydown', handleKeyDown)
+        // Clean up code to remove event listeners when unmounting component
+        return () => {
+            document.removeEventListener('keydown', handleKeyDown9);
+            document.removeEventListener('keydown', handleKeyDown16);
+            document.removeEventListener('keydown', handleKeyDown25);
+        };
 
     }) //Runs on every re-render of component
-
-
 
 
     return (
