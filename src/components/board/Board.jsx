@@ -334,7 +334,7 @@ function Board() {
 
         <div className={`${styles['game-container']}`}>
 
-            <a href="/">
+            <a href="/15-puzzle-game/">
                 <h1>15 Puzzle Game</h1>
             </a>
 
