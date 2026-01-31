@@ -1,17 +1,13 @@
 
-//Import styles
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styles from './StartMenu.module.css'
 
 function StartMenu({ storeSelectedLevel }) {
 
     // Set selected level as classic, by default
     const [selectedLevel, setSelectedLevel] = useState(1);
-
-    // Create new array with 3 elements
     const levelsArray = ['Easy', 'Classic', 'Difficult'];
 
-    // Create newLevelsArray by mapping a div for each element in levelsArray
     const newLevelsArray = levelsArray.map((level, i) => (
         <div
             key={i}
