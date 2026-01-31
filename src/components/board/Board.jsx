@@ -1,54 +1,102 @@
+
+//import styles
 import styles from './Board.module.css'
+
+//import components to be used
 import Instructions from '../instructions/Instructions';
 import Overlay from '../overlay/Overlay';
 import StartMenu from '../start-menu/StartMenu';
 import Tile from '../tile/Tile';
 import Controls from '../controls/Controls';
 import Winner from '../winner/Winner';
+
+//Import hooks from react
 import { useEffect, useState } from 'react';
 
 
 function Board() {
 
+    /*================================*/
+    /*===  INSTRUCTIONS COMPONENT ====*/
+    /*================================*/
+
+    //State variable used for toggling the rendering of Instructions component
     const [isInstructionsRendering, setIsInstructionsRendering] = useState(true);
 
+    //Toggle rendering of Instructions component
     function handleRenderingOfInstructions() {
         setIsInstructionsRendering(!isInstructionsRendering);
     }
 
+    /*=============================*/
+    /*===  STARTMENU COMPONENT ====*/
+    /*=============================*/
+
+    //State variable used for tracking nr of tiles
     const [nrOfTiles, setNrOfTiles] = useState(16);
     const [nrOfTilesPerRow, setNrOfTilesPerRow] = useState(4);
+
+    //State variable used for visibility of StartMenu
     const [isStartMenuVisible, setIsStartMenuVisible] = useState(true);
 
+    //Update state variables
     function storeSelectedLevel(numberOfTiles, numberOfTilesPerRow) {
+
+        //Update state variable
         setNrOfTiles(numberOfTiles);
         setNrOfTilesPerRow(numberOfTilesPerRow);
+
+        //Toggle visibility of StartMenu
         setIsStartMenuVisible(!isStartMenuVisible);
+
+        //Reset game
         reset();
     }
 
     function backToStartMenu() {
+
+        //Toggle visibility of StartMenu
         setIsStartMenuVisible(!isStartMenuVisible);
+
     }
 
+
+
+    /*========================*/
+    /*===  TILE COMPONENT ====*/
+    /*========================*/
+
+    //Ensures current arrangement is updated
+    //IMPORTANT for Tile component.
     useEffect(() => {
+        // Generate numbers whenever nrOfTiles or nrOfTilesPerRow changes
         setCurrentArrangementOfNrs(generateNumbers());
     }, [nrOfTiles, nrOfTilesPerRow]);
 
 
 
+    /*=========================*/
+    /*===  BOARD COMPONENT ====*/
+    /*=========================*/
+
+    //Generate array with numbers for tiles
     function generateNumbers() {
         let solvable = false;
         let newArray;
 
+        // Generating arrangements until solvable
         while (!solvable) {
+            // Create the goal state: numbers from 1 to 9, 16, 23
             newArray = Array.from({ length: nrOfTiles }, (_, i) => i + 1);
 
+            // Shuffle the array using valid moves to ensure solvability
             for (let i = newArray.length - 1; i > 0; i--) {
+                // Perform valid moves by swapping tiles adjacent to the empty slot
                 const j = Math.floor(Math.random() * (i + 1));
                 [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
             }
 
+            // Check if the arrangement is solvable
             if (nrOfTiles === 9) {
                 solvable = isSolvable9(newArray);
             } else if (nrOfTiles === 16) {
@@ -60,6 +108,7 @@ function Board() {
 
         }
 
+        // Map the array to contain keys with its values and indexes
         const arrayWithKeys = newArray.map((v, i) => ({ value: v, index: i }));
 
         return arrayWithKeys;
@@ -85,11 +134,14 @@ function Board() {
         return inversions % 2 === 0;
     }
 
+    // Check if the arrangement is solvable
     function isSolvable16(arrangement) {
+        // Count number of inversions considering the position of the empty slot
         let inversions = 0;
         for (let i = 0; i < arrangement.length - 1; i++) {
             for (let j = i + 1; j < arrangement.length; j++) {
                 if (arrangement[i] === nrOfTiles || arrangement[j] === nrOfTiles) {
+                    // Skip counting inversions involving the empty slot
                     continue;
                 }
                 if (arrangement[i] > arrangement[j]) {
@@ -98,6 +150,7 @@ function Board() {
             }
         }
 
+        // If nr of inversions + row number of the empty slot is even, the arrangement is solvable
         const emptySlotRow = Math.floor(arrangement.indexOf(nrOfTiles) / nrOfTilesPerRow) + 1;
         return (inversions + emptySlotRow) % 2 === 0;
     }
@@ -163,6 +216,9 @@ function Board() {
         setCurrentArrangementOfNrs(generateNumbers());
     }
 
+    /*===========================*/
+    /*===  KEYBOARD CONTROLS ====*/
+    /*===========================*/
 
     // Enables keyboard presses for a game of 9 tiles (3x3 grid)
     function handleKeyDown9(e) {
@@ -218,12 +274,19 @@ function Board() {
 
     }
 
+    // Enables keyboard presses for a game of 25 tiles (5x5 grid)
     function handleKeyDown25(e) {
+        // Find the index of the empty tile in the current arrangement array
         const indexOfEmptyTile = currentArrangementOfNrs.find(n => n.value === nrOfTiles).index;
 
+        // If left arrow key is pressed & empty tile is not in the rightmost column
         if (e.keyCode === 37 && indexOfEmptyTile % 5 !== 4)
+            // Move the tile adjacent to the empty tile to the left
             moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 1));
+
+        // If up arrow key is pressed & empty tile is not in the bottom row
         if (e.keyCode === 38 && !(indexOfEmptyTile > 19))
+            // Move the tile adjacent to the empty tile upwards
             moveTile(currentArrangementOfNrs.find(n => n.index === indexOfEmptyTile + 5));
 
         // If right arrow key is pressed & empty tile is not in the leftmost column
@@ -309,7 +372,7 @@ function Board() {
 
         </div>
     )
-}
+};
 
 //export component for use
 export default Board;

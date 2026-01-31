@@ -1,3 +1,4 @@
+//import styles
 import styles from './Instructions.module.css'
 
 function Instructions({ handleRenderingOfInstructions }) {
