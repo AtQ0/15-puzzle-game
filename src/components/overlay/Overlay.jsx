@@ -1,22 +1,19 @@
-
-
 //import styles
-import styles from './Overlay.module.css'
+import styles from "./Overlay.module.css";
 
-function Overlay({ numberOfTiles, numberOfTilesPerRow }) {
+function Overlay({ numberOfTiles }) {
+  //Create new array with n-elements
+  const array = new Array(numberOfTiles);
 
-    //Create new array with n-elements
-    const array = new Array(numberOfTiles);
+  //Populate all elements in array with undefined
+  array.fill();
 
-    //Populate all elements in array with undefined
-    array.fill();
+  //Create newArray by mapping a div for each element in array
+  const newArray = array.map((_, i) => (
+    <div className={styles.overlay} key={i}></div>
+  ));
 
-    //Create newArray by mapping a div for each element in array
-    const newArray = array.map((_, i) => <div className={styles.overlay} key={i}></div>)
-
-    return (
-        newArray
-    );
+  return newArray;
 }
 
 //export component for use
